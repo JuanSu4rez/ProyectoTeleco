@@ -38,8 +38,7 @@ public class NetClient {
 		}
 	}
 	
-	public void sendMessageMonitorDisk(){
-		System.out.println("SENDMESSAGE - CLIENT");
+	public void sendMessageMonitorDisk(){		
 		String message = "MONITOR_DISK";
 		try {
 			dataOutputStream.writeUTF(message);  
@@ -51,7 +50,21 @@ public class NetClient {
 			System.out.println(e.getCause());
 			System.out.println(e.getStackTrace());
 			System.out.println(e);
-			
+		}
+	}
+	
+	public void sendMessageMonitorRam(){		
+		String message = "MONITOR_MEMORY_JVM";
+		try {
+			dataOutputStream.writeUTF(message);  
+			dataOutputStream.flush();  
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("exception client");
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+			System.out.println(e.getStackTrace());
+			System.out.println(e);
 		}
 	}
 

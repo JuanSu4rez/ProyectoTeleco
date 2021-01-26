@@ -24,6 +24,9 @@ public class Control implements ActionListener {
 		case ClientFrame.MONITOR_DISK:
 			monitorDisk();
 			break;
+		case ClientFrame.MONITOR_MEMORY_JVM:
+			monitorRam();
+			break;
 
 		default:
 			break;
@@ -34,6 +37,10 @@ public class Control implements ActionListener {
 	
 	private void monitorDisk () {		
 		netClient.sendMessageMonitorDisk();
+	} 
+	
+	private void monitorRam () {		
+		netClient.sendMessageMonitorRam();
 	} 
 
 }

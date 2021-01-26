@@ -19,6 +19,7 @@ import control.Control;
 public class ClientFrame extends JFrame {
 	
 	public final static String MONITOR_DISK = "Disco";
+	public final static String MONITOR_MEMORY_JVM = "Memoria JVM";
 	
 	private final int WIDTH = 600;
 	private final int HEIGHT = 400;
@@ -35,7 +36,7 @@ public class ClientFrame extends JFrame {
 	
 	//end pnlDiskUsage
 	
-	
+	private JButton btnRamUsage;
 	
 
 	public ClientFrame( Control controlador) {
@@ -79,6 +80,10 @@ public class ClientFrame extends JFrame {
 			btnDiskUsage.addActionListener(controlador);
 			this.pnlDiskUsage.add(btnDiskUsage);
 			
+			btnRamUsage = new JButton(MONITOR_MEMORY_JVM);
+			btnRamUsage.setBounds(220, 200, 100, 30);
+			btnRamUsage.addActionListener(controlador);
+			this.pnlDiskUsage.add(btnRamUsage);
 		}
 		
 		
