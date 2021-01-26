@@ -62,7 +62,7 @@ public class ClientFrame extends JFrame {
 			lblTotalSpace.setBounds(10, 10, 100, 50);
 			this.pnlDiskUsage.add(lblTotalSpace);
 			
-			lblFreeSpaceValue = new JLabel("AAAAAAAaa ");
+			lblFreeSpaceValue = new JLabel("");
 			lblFreeSpaceValue.setBounds(90, 10, 100, 50);
 			this.pnlDiskUsage.add(lblFreeSpaceValue);
 			
@@ -70,7 +70,7 @@ public class ClientFrame extends JFrame {
 			lblFreeSpace.setBounds(10, 50, 100, 50);
 			this.pnlDiskUsage.add(lblFreeSpace);
 			
-			lblTotalSpaceValue = new JLabel("BBBBBBBB ");
+			lblTotalSpaceValue = new JLabel("");
 			lblTotalSpaceValue.setBounds(90, 50, 100, 50);
 			this.pnlDiskUsage.add(lblTotalSpaceValue);
 			
