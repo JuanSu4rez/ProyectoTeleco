@@ -99,7 +99,7 @@ System.out.println(String.format("Usable space: %.2f GB",
 		 */
 		
 		
-		this.setVisible(true);
+		//this.setVisible(true);
 		
 		
 	}

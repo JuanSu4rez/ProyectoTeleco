@@ -5,26 +5,54 @@ import java.io.*;
 
 public class NetClient {
 	
-	public static void main(String args[])throws Exception{  
-		Socket s=new Socket("localhost",3333);  
-		DataInputStream din=new DataInputStream(s.getInputStream());  
-		DataOutputStream dout=new DataOutputStream(s.getOutputStream());  
-		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));  
-		  
-		String str="",str2="";  
-		while(!str.equals("stop")){  
-		str=br.readLine();  
-		dout.writeUTF(str);  
-		dout.flush();  
-		str2=din.readUTF();  
-		System.out.println("Server says: "+str2);  
-		}  
-		  
-		dout.close();  
-		s.close();  
+	DataInputStream dataInputStream;  
+	DataOutputStream dataOutputStream;
+	Socket socket;
+	
+	public NetClient() {
+		try {
+			socket = new Socket("localhost", 3333);  
+			dataInputStream = new DataInputStream(socket.getInputStream());  
+			dataOutputStream = new DataOutputStream(socket.getOutputStream());  
+			//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));  
+			
+			/*
+			 * 
+			
+			String str = "", str2 = "";  
+			while(!str.equals("stop")){  
+				//str = bufferedReader.readLine();  
+				dataOutputStream.writeUTF(str);  
+				dataOutputStream.flush();  
+				//str2 = dataInputStream.readUTF();  
+				System.out.println("Server says: "+str2);  
+			}  
+			   */
+			//dataOutputStream.close();  
+			//socket.close();  
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		} finally {
+			
+		}
+	}
+	
+	public void sendMessageMonitorDisk(){
+		System.out.println("SENDMESSAGE - CLIENT");
+		String message = "MONITOR_DISK";
+		try {
+			dataOutputStream.writeUTF(message);  
+			dataOutputStream.flush();  
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("exception client");
+			System.out.println(e.getMessage());
+			System.out.println(e.getCause());
+			System.out.println(e.getStackTrace());
+			System.out.println(e);
+			
+		}
 	}
 
-	/**
-	 * 
-	 */
 }
