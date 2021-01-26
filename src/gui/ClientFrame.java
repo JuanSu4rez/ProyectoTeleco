@@ -20,15 +20,17 @@ public class ClientFrame extends JFrame {
 	
 	public final static String MONITOR_DISK = "Disco";
 	public final static String MONITOR_MEMORY_JVM = "Memoria JVM";
+	public final static String START = "Iniciar";
+	public final static String STOP = "Detener";
 	
-	private final int WIDTH = 600;
-	private final int HEIGHT = 400;
+	
+	private final int WIDTH = 640;
+	private final int HEIGHT = 600;
 	private final String TITLE = "Proyecto telecomunicaciones";
 	
 	//pnlDiskUsage
 	private JPanel pnlDiskUsage;
 	
-	private JButton btnDiskUsage;
 	private JLabel lblFreeSpace;
 	private JLabel lblFreeSpaceValue;
 	private JLabel lblTotalSpace;
@@ -36,7 +38,18 @@ public class ClientFrame extends JFrame {
 	
 	//end pnlDiskUsage
 	
-	private JButton btnRamUsage;
+	//pnlMemoryJVMUsage
+	private JPanel pnlJVMMemoryUsage;	
+	
+	private JLabel lblInitialMemory;
+	private JLabel lblUsedHeapMemory;
+	private JLabel lblMaxHeapMemory;
+	private JLabel lblCommitedMemory;
+	
+	//end pnlMemoryJVMUsage
+	
+	private JButton btnStart;
+	private JButton btnStop;
 	
 
 	public ClientFrame( Control controlador) {
@@ -52,6 +65,62 @@ public class ClientFrame extends JFrame {
 		pnlDiskUsage: {
 			
 			TitledBorder title;
+			title = BorderFactory.createTitledBorder(MONITOR_DISK);
+					
+			this.pnlDiskUsage = new JPanel();		
+			this.pnlDiskUsage.setBorder(title);
+			this.pnlDiskUsage.setBounds(10, 10, 200, 100);
+			this.pnlDiskUsage.setLayout(null);						
+			 		
+			lblTotalSpace = new JLabel("Espacio total: ");
+			lblTotalSpace.setBounds(10, 10, 100, 50);
+			this.pnlDiskUsage.add(lblTotalSpace);
+			
+			lblFreeSpaceValue = new JLabel("");
+			lblFreeSpaceValue.setBounds(90, 10, 100, 50);
+			this.pnlDiskUsage.add(lblFreeSpaceValue);
+			
+			lblFreeSpace = new JLabel("Espacio libre: ");
+			lblFreeSpace.setBounds(10, 50, 100, 50);
+			this.pnlDiskUsage.add(lblFreeSpace);
+			
+			lblTotalSpaceValue = new JLabel("");
+			lblTotalSpaceValue.setBounds(90, 50, 100, 50);
+			this.pnlDiskUsage.add(lblTotalSpaceValue);		
+		}
+		
+		pnlMemoryJVMUsage: {
+			
+			TitledBorder title;
+			title = BorderFactory.createTitledBorder(MONITOR_MEMORY_JVM);
+					
+			pnlJVMMemoryUsage = new JPanel();		
+			pnlJVMMemoryUsage.setBorder(title);
+			pnlJVMMemoryUsage.setBounds(220, 10, 400, 300);
+			pnlJVMMemoryUsage.setLayout(null);						
+			 		
+			lblInitialMemory = new JLabel("Espacio total: ");
+			lblInitialMemory.setBounds(10, 10, 100, 50);
+			this.pnlJVMMemoryUsage.add(lblInitialMemory);
+			
+			lblFreeSpaceValue = new JLabel("");
+			lblFreeSpaceValue.setBounds(90, 10, 100, 50);
+			this.pnlJVMMemoryUsage.add(lblFreeSpaceValue);
+			
+			lblFreeSpace = new JLabel("Espacio libre: ");
+			lblFreeSpace.setBounds(10, 50, 100, 50);
+			this.pnlJVMMemoryUsage.add(lblFreeSpace);
+			
+			lblTotalSpaceValue = new JLabel("");
+			lblTotalSpaceValue.setBounds(90, 50, 100, 50);
+			this.pnlJVMMemoryUsage.add(lblTotalSpaceValue);
+		
+		}
+		
+		pnlCPUUsage: {
+			/*
+			 * 
+			 * TitledBorder title;
 			title = BorderFactory.createTitledBorder(MONITOR_DISK);
 					
 			this.pnlDiskUsage = new JPanel();		
@@ -74,22 +143,25 @@ public class ClientFrame extends JFrame {
 			lblTotalSpaceValue = new JLabel("");
 			lblTotalSpaceValue.setBounds(90, 50, 100, 50);
 			this.pnlDiskUsage.add(lblTotalSpaceValue);
+			 */
 			
-			btnDiskUsage = new JButton(MONITOR_DISK);
-			btnDiskUsage.setBounds(220, 100, 100, 30);
-			btnDiskUsage.addActionListener(controlador);
-			this.pnlDiskUsage.add(btnDiskUsage);
 			
-			btnRamUsage = new JButton(MONITOR_MEMORY_JVM);
-			btnRamUsage.setBounds(220, 200, 100, 30);
-			btnRamUsage.addActionListener(controlador);
-			this.pnlDiskUsage.add(btnRamUsage);
 		}
 		
 		
+		btnStart = new JButton(START);
+		btnStart.setBounds(400, 500, 100, 30);
+		btnStart.addActionListener(controlador);
+		this.add(btnStart);
+		
+		btnStop = new JButton(STOP);
+		btnStop.setBounds(520, 500, 100, 30);
+		btnStop.addActionListener(controlador);
+		this.add(btnStop);
 		
 		
 		this.add(pnlDiskUsage);
+		this.add(pnlJVMMemoryUsage);
 		
 		
 		
