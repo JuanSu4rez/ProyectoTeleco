@@ -9,14 +9,21 @@ import net.NetClient;
 
 public class Control implements ActionListener {
 	
-	private NetClient netClient;
+	static NetClient netClient;
 	static boolean monitoring;
 	Thread thread;
 
-	public Control() {
-		// TODO Auto-generated constructor stub
-		netClient = new NetClient();		
+	public Control() {		
+		System.out.println("constructor CONTROL");
+		Runnable runnable = () -> initClient();
+		Thread thread = new Thread(runnable);
+		thread.start();		
 	}
+	
+	public void initClient() {				
+		netClient = new NetClient();
+	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -58,4 +65,7 @@ public class Control implements ActionListener {
 		monitoring = false;
 	} 
 
+	public static void refreshGUI() {
+		
+	}
 }
