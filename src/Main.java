@@ -6,7 +6,6 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ClientFrame clientFrame = new ClientFrame(new Control());
-		System.out.println("Iniciando cliente...");
 		clientFrame.setVisible(true);
 	}
 
