@@ -1,5 +1,8 @@
 package net;
-import java.net.*;  
+import java.net.*;
+
+import control.Control;
+
 import java.io.*;  
 
 
@@ -11,9 +14,16 @@ public class NetClient {
 	
 	public NetClient() {
 		try {
+			System.out.println("CONSTRUCTOR DEL CLIENTE");
 			socket = new Socket("localhost", 3333);  
 			dataInputStream = new DataInputStream(socket.getInputStream());  
 			dataOutputStream = new DataOutputStream(socket.getOutputStream());  
+			
+			String messageFromServer = "";
+			while (!messageFromServer.equals("STOP")) {
+				messageFromServer = dataInputStream.readUTF();
+				System.out.println("Message from Server : "+ messageFromServer);				
+			}
 			//BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));  
 			
 			/*
@@ -34,7 +44,12 @@ public class NetClient {
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
-			
+			try {
+				dataOutputStream.close();  
+				socket.close();  
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 	}
 	
@@ -43,6 +58,8 @@ public class NetClient {
 		try {
 			dataOutputStream.writeUTF(message);  
 			dataOutputStream.flush();  
+			//byte[]
+			//dataOutputStream.write(b);
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("exception client");
@@ -51,6 +68,10 @@ public class NetClient {
 			System.out.println(e.getStackTrace());
 			System.out.println(e);
 		}
+	}
+	
+	public void sendServerData() {
+		Control.refreshGUI();
 	}
 
 }
